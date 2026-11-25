@@ -1,0 +1,15 @@
+Hipótesis,Especificación,Coeficiente,e. e.,Valor p,N
+H1,Base: modelo (3) de la Tabla H1,0.605,(0.378),0.112,1620
+H1,Sin Alfin Banco,1.224***,(0.417),0.004,1512
+H1,Sin bancos con menos de 1 % del activo (5),2.504***,(0.683),0.000,1080
+H1,Excedente acotado a los percentiles 1 y 99,0.866**,(0.428),0.045,1620
+H1,Excedente y controles en t-6,0.289,(0.395),0.466,1620
+H1,Sin el periodo de pandemia (2020-03 a 2021-12),0.478,(0.366),0.196,1290
+H1,Driscoll-Kraay con 12 rezagos,0.605,(0.460),0.191,1620
+H3,"Base: crecimiento del crédito, bajo excedente × post",6.608**,(2.643),0.015,798
+H3,Incluye a Alfin Banco,5.706***,(1.580),0.001,855
+H3,Ventana desde 2022-01,10.371***,(1.598),0.000,672
+H3,Inicio del tratamiento en 2023-01 (nuevos ponderadores),6.270**,(2.970),0.039,798
+H3,"Densidad APR, incluye a Alfin Banco",-11.654***,(2.397),0.000,855
+H3,Placebo en crecimiento del crédito: fecha ficticia 2018-07 (ventana 2017-01 a 2019-12),-12.420***,(3.542),0.001,504
+H3,Placebo en ln crédito real: fecha ficticia 2018-07 (ventana 2017-01 a 2019-12),-9.462***,(1.792),0.000,504

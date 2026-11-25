@@ -1,0 +1,25 @@
+Variable,(1) Total,(2) Total,(3) Total,(4) Mensual,(5) Hipotecario,(6) Préstamos,(7) Tarjetas
+Excedente de capital (t-12),0.610*,0.454,0.605,,0.255,0.804*,13.249*
+,(0.364),(0.388),(0.378),,(0.360),(0.423),(7.469)
+Excedente de capital (t-1),,,,0.184**,,,
+,,,,(0.085),,,
+ln activo real (t-12),,,-23.842***,-1.008,2.453,-32.425***,40.263*
+,,,(5.016),(1.022),(6.125),(5.682),(23.707)
+Morosidad (t-12),,,-3.267***,-0.525***,-0.677,-2.931***,-3.158
+,,,(0.649),(0.077),(0.697),(0.926),(2.177)
+Liquidez (t-12),,,0.342**,-0.012,-0.502***,0.640***,0.069
+,,,(0.150),(0.024),(0.178),(0.233),(0.800)
+Depósitos / activo (t-12),,,0.421**,0.037,0.174*,0.715***,1.435*
+,,,(0.161),(0.037),(0.102),(0.231),(0.774)
+Brecha del PBI,-0.212***,,,,,,
+,(0.058),,,,,,
+Variación de la tasa de referencia (12 m),0.953***,,,,,,
+,(0.309),,,,,,
+Observaciones,1 620,1 620,1 620,1 785,818,1 560,668
+Bancos,15,15,15,15,9,15,8
+Meses,108,108,108,119,108,108,108
+R² within,0.039,0.182,0.352,0.152,0.307,0.289,0.602
+Variable dependiente,Δ12 ln crédito,Δ12 ln crédito,Δ12 ln crédito,Δ1 ln crédito,Δ12 ln hipotec.,Δ12 ln préstamos,Δ12 ln tarjetas
+Efectos fijos de banco,Sí,Sí,Sí,Sí,Sí,Sí,Sí
+Efectos fijos de mes,No,Sí,Sí,Sí,Sí,Sí,Sí
+Rezagos Driscoll-Kraay,4,4,4,4,4,4,4

@@ -1,0 +1,10 @@
+Vía,Fuente,Código,Variable,Unidad,Uso en el estudio
+Vía 1 · API REST,BCRP (BCRPData),PD04722MM,Tasa de referencia,%,Choque de política (H2)
+Vía 1 · API REST,BCRP (BCRPData),PN07807NM,Tasa activa promedio en MN (TAMN),%,Precio del crédito (Figura 1)
+Vía 1 · API REST,BCRP (BCRPData),PN07816NM,Tasa pasiva promedio en MN (TIPMN),%,Margen de intermediación (Figura 1)
+Vía 1 · API REST,BCRP (BCRPData),PN38705PM,IPC de Lima Metropolitana,Índice dic. 2021 = 100,Deflactor del crédito
+Vía 1 · API REST,BCRP (BCRPData),PN01773AM,PBI desestacionalizado,Índice 2007 = 100,Brecha del producto (control)
+Vía 1 · API REST,BCRP (BCRPData),PN00505MM,Crédito al sector privado,Millones de S/,Contraste agregado
+Vía 2 · Descarga programática,SBS,B-2201,"Balance: crédito por modalidad y moneda, fondeo, liquidez",Millones de S/,Crédito real y controles (H1-H4)
+Vía 2 · Descarga programática,SBS,B-2401,Indicadores financieros: morosidad,%,Control de riesgo de crédito
+Vía 2 · Descarga programática,SBS,B-2402,"Requerimientos, APR, patrimonio efectivo, ratios de capital",Millones de S/ y %,Excedente de capital y densidad APR
