@@ -1001,7 +1001,7 @@ def figura_robustez(t: pd.DataFrame) -> plt.Figure:
     d = t.copy()
     d["coef"] = d["Coeficiente"].astype(str).str.replace("*", "", regex=False).astype(float)
     d["ee"] = d["e. e."].astype(str).str.strip("()").astype(float)
-    figura, ejes = plt.subplots(2, 1, figsize=(ANCHO_DOS_COLUMNAS, 4.4), gridspec_kw={"hspace": 0.45})
+    figura, ejes = plt.subplots(2, 1, figsize=(5.2, 4.6), gridspec_kw={"hspace": 0.45})
     for eje, h, titulo in [(ejes[0], "H1", "A. H1: excedente rezagado"),
                            (ejes[1], "H3", "B. H3: bajo excedente × post")]:
         g = d[d["Hipótesis"] == h].reset_index(drop=True)
@@ -1013,7 +1013,7 @@ def figura_robustez(t: pd.DataFrame) -> plt.Figure:
         eje.scatter(g["coef"], y, color=colores, s=14, zorder=3)
         eje.axvline(0, color=ROJO, lw=0.8, ls="--")
         etiquetas = [e.split(" (ventana")[0].replace("Base: ", "Base · ") for e in g["Especificación"]]
-        eje.set_yticks(y, etiquetas, fontsize=7)
+        eje.set_yticks(y, etiquetas, fontsize=7.5)
         eje.set_title(titulo)
         eje.grid(axis="y", visible=False)
     return figura
