@@ -2,4 +2,4 @@ Repositorio GitHub del Artículo II (código, datos y salidas)
 Excedente de capital regulatorio y oferta de crédito de la banca múltiple peruana
 Autora: Lucia Pamela Colonio Yaringaño (2024200495A)
 
-(pendiente: crear el repositorio en github.com/colonio111 y pegar aquí su enlace)
+https://github.com/colonio111/excedente-capital-banca-peruana-basilea-iii
