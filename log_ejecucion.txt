@@ -556,3 +556,76 @@
 [2026-11-25 12:44:37] [04_analisis] Robustez H3 · Placebo en ln crédito real: fecha ficticia 2018-07 (ventana 2017-01 a 2019-12): -9.462*** (1.792) p=0.000
 [2026-11-25 12:44:38] [04_analisis] Figura guardada: salidas/fig_correlaciones.svg
 [2026-11-25 12:44:38] [04_analisis] Análisis terminado sin errores
+[2026-11-25 20:22:42] [04_analisis] Inicio del análisis
+[2026-11-25 20:22:42] [04_analisis] Versiones: Python 3.14.7 · numpy 2.5.3 · pandas 3.0.6 · scipy 1.18.1 · matplotlib 3.11.2
+[2026-11-25 20:22:42] [04_analisis] Bloque 1 · Fuentes y marco regulatorio
+[2026-11-25 20:22:42] [04_analisis] Tabla guardada: salidas/tabla_fuentes.csv · 9 filas
+[2026-11-25 20:22:42] [04_analisis] Tabla guardada: salidas/tabla_limite_global.csv · 6 filas
+[2026-11-25 20:22:43] [04_analisis] Figura guardada: salidas/fig_marco_regulatorio.svg
+[2026-11-25 20:22:43] [04_analisis] Sistema 2025-12: ratio de capital global 17.95 % · CET1 13.98 % · límite 10.0 % · densidad APR 88.75 %
+[2026-11-25 20:22:43] [04_analisis] Bloque 2 · Análisis descriptivo
+[2026-11-25 20:22:43] [04_analisis] Tabla guardada: salidas/tabla_descriptivos.csv · 12 filas
+[2026-11-25 20:22:44] [04_analisis] Tabla guardada: salidas/tabla_bancos.csv · 15 filas
+[2026-11-25 20:22:45] [04_analisis] Figura guardada: salidas/fig_excedente_bancos.svg
+[2026-11-25 20:22:46] [04_analisis] Figura guardada: salidas/fig_densidad_apr.svg
+[2026-11-25 20:22:46] [04_analisis] Bancos con bajo excedente previo: ['BANCOM', 'BBVA Perú', 'BanBif', 'Banco Pichincha', 'Banco Ripley', 'Interbank', 'Scotiabank Perú']
+[2026-11-25 20:22:46] [04_analisis] Bloque 3 · H1: excedente de capital y crecimiento del crédito
+[2026-11-25 20:22:46] [04_analisis] Tabla guardada: salidas/tabla_h1_excedente.csv · 24 filas
+[2026-11-25 20:22:46] [04_analisis] H1 (1) Total: β excedente = 0.610 (e. e. 0.364, p = 0.097) · N = 1620
+[2026-11-25 20:22:46] [04_analisis] H1 (2) Total: β excedente = 0.454 (e. e. 0.388, p = 0.244) · N = 1620
+[2026-11-25 20:22:46] [04_analisis] H1 (3) Total: β excedente = 0.605 (e. e. 0.378, p = 0.112) · N = 1620
+[2026-11-25 20:22:46] [04_analisis] H1 (4) Mensual: β excedente = 0.184 (e. e. 0.085, p = 0.032) · N = 1785
+[2026-11-25 20:22:46] [04_analisis] H1 (5) Hipotecario: β excedente = 0.255 (e. e. 0.360, p = 0.480) · N = 818
+[2026-11-25 20:22:46] [04_analisis] H1 (6) Préstamos: β excedente = 0.804 (e. e. 0.423, p = 0.060) · N = 1560
+[2026-11-25 20:22:46] [04_analisis] H1 (7) Tarjetas: β excedente = 13.249 (e. e. 7.469, p = 0.079) · N = 668
+[2026-11-25 20:22:46] [04_analisis] Figura guardada: salidas/fig_h1_dispersion.svg
+[2026-11-25 20:22:46] [04_analisis] Bloque 4 · H2: proyecciones locales
+[2026-11-25 20:22:48] [04_analisis] H2: excedente medio del panel (centrado) = 8.09 p. p.
+[2026-11-25 20:22:48] [04_analisis] Tabla guardada: salidas/tabla_h2_proyecciones.csv · 25 filas
+[2026-11-25 20:22:48] [04_analisis] Figura guardada: salidas/fig_h2_proyecciones.svg
+[2026-11-25 20:22:49] [04_analisis] H2 h=6: promedio 3.555 (p 0.073) · diferencial ×1 D. E. 2.098 (p 0.367)
+[2026-11-25 20:22:49] [04_analisis] H2 h=12: promedio 6.430 (p 0.002) · diferencial ×1 D. E. -1.510 (p 0.680)
+[2026-11-25 20:22:49] [04_analisis] H2 h=18: promedio 3.280 (p 0.146) · diferencial ×1 D. E. -7.790 (p 0.051)
+[2026-11-25 20:22:49] [04_analisis] H2 h=24: promedio 0.477 (p 0.875) · diferencial ×1 D. E. -3.469 (p 0.162)
+[2026-11-25 20:22:49] [04_analisis] Bloque 5 · H3: transición a Basilea III
+[2026-11-25 20:22:49] [04_analisis] H3 DiD d12_ln_credito: 6.608 (e. e. 2.643, p 0.015) · continua 4.782 (p 0.003) · con tendencias 14.326 (p 0.000)
+[2026-11-25 20:22:49] [04_analisis] H3 DiD ln_credito: -3.113 (e. e. 2.234, p 0.169) · continua -1.466 (p 0.285) · con tendencias 3.678 (p 0.186)
+[2026-11-25 20:22:49] [04_analisis] H3 DiD densidad_apr: -2.881 (e. e. 0.912, p 0.003) · continua -6.690 (p 0.000) · con tendencias 0.276 (p 0.847)
+[2026-11-25 20:22:49] [04_analisis] H3 DiD ratio_capital_global: -1.965 (e. e. 0.224, p 0.000) · continua -1.553 (p 0.000) · con tendencias -2.283 (p 0.000)
+[2026-11-25 20:22:49] [04_analisis] H3 DiD capital_activo: -2.169 (e. e. 0.256, p 0.000) · continua -2.688 (p 0.000) · con tendencias -1.378 (p 0.003)
+[2026-11-25 20:22:49] [04_analisis] H3 DiD liquidez: 4.778 (e. e. 0.778, p 0.000) · continua 5.755 (p 0.000) · con tendencias 1.947 (p 0.004)
+[2026-11-25 20:22:49] [04_analisis] Tabla guardada: salidas/tabla_h3_did.csv · 6 filas
+[2026-11-25 20:22:49] [04_analisis] Tabla guardada: salidas/tabla_h3_eventos.csv · 57 filas
+[2026-11-25 20:22:50] [04_analisis] Figura guardada: salidas/fig_h3_eventos.svg
+[2026-11-25 20:22:50] [04_analisis] H3 tendencias previas ln_credito: coeficientes previos significativos al 5 %: 6 de 7
+[2026-11-25 20:22:50] [04_analisis] H3 tendencias previas densidad_apr: coeficientes previos significativos al 5 %: 6 de 7
+[2026-11-25 20:22:50] [04_analisis] H3 tendencias previas ratio_capital_global: coeficientes previos significativos al 5 %: 6 de 7
+[2026-11-25 20:22:50] [04_analisis] Bloque 6 · H4: descomposición del ratio de capital
+[2026-11-25 20:22:50] [04_analisis] Tabla guardada: salidas/tabla_h4_descomposicion.csv · 6 filas
+[2026-11-25 20:22:50] [04_analisis] Figura guardada: salidas/fig_h4_descomposicion.svg
+[2026-11-25 20:22:50] [04_analisis] H4 Flexibilización 2021-03 a 2023-03 · Sistema: ΔlnRCG -3.95 = PE 6.54 + densidad -12.59 + tamaño 2.09
+[2026-11-25 20:22:50] [04_analisis] H4 Flexibilización 2021-03 a 2023-03 · Bajo excedente: ΔlnRCG -7.64 = PE 7.68 + densidad -16.47 + tamaño 1.16
+[2026-11-25 20:22:50] [04_analisis] H4 Flexibilización 2021-03 a 2023-03 · Alto excedente: ΔlnRCG 1.14 = PE 5.18 + densidad -7.28 + tamaño 3.24
+[2026-11-25 20:22:50] [04_analisis] H4 Alza a Basilea III 2023-03 a 2025-12 · Sistema: ΔlnRCG 14.25 = PE 23.18 + densidad -0.81 + tamaño -8.12
+[2026-11-25 20:22:50] [04_analisis] H4 Alza a Basilea III 2023-03 a 2025-12 · Bajo excedente: ΔlnRCG 13.15 = PE 19.9 + densidad -1.22 + tamaño -5.53
+[2026-11-25 20:22:50] [04_analisis] H4 Alza a Basilea III 2023-03 a 2025-12 · Alto excedente: ΔlnRCG 15.07 = PE 27.0 + densidad -0.7 + tamaño -11.24
+[2026-11-25 20:22:50] [04_analisis] Bloque 7 · Robustez
+[2026-11-25 20:22:51] [04_analisis] Tabla guardada: salidas/tabla_robustez.csv · 14 filas
+[2026-11-25 20:22:51] [04_analisis] Robustez H1 · Base: modelo (3) de la Tabla H1: 0.605 (0.378) p=0.112
+[2026-11-25 20:22:51] [04_analisis] Robustez H1 · Sin Alfin Banco: 1.224*** (0.417) p=0.004
+[2026-11-25 20:22:51] [04_analisis] Robustez H1 · Sin bancos con menos de 1 % del activo (5): 2.504*** (0.683) p=0.000
+[2026-11-25 20:22:51] [04_analisis] Robustez H1 · Excedente acotado a los percentiles 1 y 99: 0.866** (0.428) p=0.045
+[2026-11-25 20:22:51] [04_analisis] Robustez H1 · Excedente y controles en t-6: 0.289 (0.395) p=0.466
+[2026-11-25 20:22:51] [04_analisis] Robustez H1 · Sin el periodo de pandemia (2020-03 a 2021-12): 0.478 (0.366) p=0.196
+[2026-11-25 20:22:51] [04_analisis] Robustez H1 · Driscoll-Kraay con 12 rezagos: 0.605 (0.460) p=0.191
+[2026-11-25 20:22:51] [04_analisis] Robustez H3 · Base: crecimiento del crédito, bajo excedente × post: 6.608** (2.643) p=0.015
+[2026-11-25 20:22:51] [04_analisis] Robustez H3 · Incluye a Alfin Banco: 5.706*** (1.580) p=0.001
+[2026-11-25 20:22:51] [04_analisis] Robustez H3 · Ventana desde 2022-01: 10.371*** (1.598) p=0.000
+[2026-11-25 20:22:51] [04_analisis] Robustez H3 · Inicio del tratamiento en 2023-01 (nuevos ponderadores): 6.270** (2.970) p=0.039
+[2026-11-25 20:22:51] [04_analisis] Robustez H3 · Densidad APR, incluye a Alfin Banco: -11.654*** (2.397) p=0.000
+[2026-11-25 20:22:51] [04_analisis] Robustez H3 · Placebo en crecimiento del crédito: fecha ficticia 2018-07 (ventana 2017-01 a 2019-12): -12.420*** (3.542) p=0.001
+[2026-11-25 20:22:51] [04_analisis] Robustez H3 · Placebo en ln crédito real: fecha ficticia 2018-07 (ventana 2017-01 a 2019-12): -9.462*** (1.792) p=0.000
+[2026-11-25 20:22:52] [04_analisis] Figura guardada: salidas/fig_correlaciones.svg
+[2026-11-25 20:22:55] [04_analisis] Figura guardada: salidas/fig_capital_bancos.svg
+[2026-11-25 20:22:55] [04_analisis] Figura guardada: salidas/fig_robustez.svg
+[2026-11-25 20:22:55] [04_analisis] Análisis terminado sin errores

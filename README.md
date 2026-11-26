@@ -122,6 +122,8 @@ Windows: `Get-FileHash datos_procesados/datos_procesados_2024200495A.csv -Algori
 | `tabla_h4_descomposicion.csv` · `fig_h4_descomposicion.svg` | H4: márgenes de ajuste del ratio de capital |
 | `tabla_robustez.csv` | H1 y H3 con especificaciones alternativas y placebos |
 | `fig_correlaciones.svg` | Matriz de correlaciones |
+| `fig_capital_bancos.svg` | Ratio de capital global y límite global por banco (Anexo B) |
+| `fig_robustez.svg` | Coeficientes de robustez de H1 y H3 con IC 95 % (Anexo B) |
 
 Métodos implementados en `04_analisis.py` con numpy y scipy: efectos fijos de banco y de mes, errores de Driscoll y Kraay, proyecciones locales en panel, estudio de eventos, diferencias en diferencias con tendencias por banco y descomposición de Cohen y Scatigna (2016).
 

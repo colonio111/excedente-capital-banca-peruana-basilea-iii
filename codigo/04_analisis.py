@@ -40,6 +40,8 @@ Bloques (cada uno genera sus tablas y figuras en /salidas):
     7. Robustez
          tabla_robustez.csv            H1 y H3 con especificaciones alternativas y placebo
          fig_correlaciones.svg         matriz de correlaciones
+         fig_capital_bancos.svg        ratio de capital y límite global por banco (anexo)
+         fig_robustez.svg              coeficientes de robustez con IC 95 % (anexo)
 
 Método (implementado con numpy y scipy, sin cajas negras):
     - Efectos fijos por banco (transformación within) y por mes (variables
@@ -187,6 +189,14 @@ def guardar_figura(figura: plt.Figure, nombre: str) -> None:
     figura.savefig(CARPETA_SALIDAS / nombre.replace(".svg", ".png"), format="png", dpi=200)
     plt.close(figura)
     anotar(f"Figura guardada: salidas/{nombre}")
+
+
+def ejes_anuales(*ejes: plt.Axes, paso: int = 2) -> None:
+    """Fechas del eje x cada `paso` años, para que las etiquetas no se encimen en paneles angostos."""
+    import matplotlib.dates as mdates
+    for eje in ejes:
+        eje.xaxis.set_major_locator(mdates.YearLocator(paso))
+        eje.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 
 def sombrear_pandemia(eje: plt.Axes) -> None:
@@ -409,6 +419,7 @@ def figura_marco(s: pd.DataFrame) -> plt.Figure:
     b.set_title("B. Tasas de interés en moneda nacional (%)")
     sombrear_pandemia(b)
     b.legend(loc="center left", fontsize=6.5)
+    ejes_anuales(a, b)
     return figura
 
 
@@ -541,6 +552,7 @@ def figura_densidad(s: pd.DataFrame, panel: pd.DataFrame, exposicion: pd.DataFra
     sombrear_pandemia(b)
     marcar_eventos(b, con_texto=False)
     b.legend(loc="upper right", fontsize=6.5)
+    ejes_anuales(a, b)
     return figura
 
 
@@ -674,8 +686,8 @@ def figura_lp(lp: pd.DataFrame, de_excedente: float) -> plt.Figure:
     """Figura 5: respuesta acumulada del crédito real a un alza de 1 p. p. en la tasa de referencia."""
     figura, (a, b) = plt.subplots(1, 2, figsize=(ANCHO_DOS_COLUMNAS, 2.5), gridspec_kw={"wspace": 0.25})
     for eje, col, color, titulo, escala in [
-        (a, "promedio", AZUL, "A. Asociación promedio crédito real-tasa (%)", 1.0),
-        (b, "diferencial", DORADO, f"B. Diferencia por +1 D. E. de excedente ({de_excedente:.1f}".replace(".", ",") + " p. p.)", de_excedente),
+        (a, "promedio", AZUL, "A. Respuesta promedio del crédito (%)", 1.0),
+        (b, "diferencial", DORADO, "B. Diferencia por +1 D. E. de excedente", de_excedente),
     ]:
         y = lp[col] * escala
         ee = lp[f"ee_{col}"] * escala
@@ -789,7 +801,9 @@ def figura_eventos(ev: pd.DataFrame) -> plt.Figure:
         eje.axhline(0, color=GRIS, lw=0.8)
         base = int(e.index[e["trimestre"] == TRIMESTRE_BASE][0])
         eje.axvline(base + 0.5, color=ROJO, lw=0.8, ls="--")
-        eje.set_xticks(x[::4], [t.replace("Q", "T") for t in e["trimestre"][::4]], rotation=0, fontsize=6.3)
+        # Una etiqueta por año, en el primer trimestre: «2022», «2023»…
+        anuales = [i for i, t in enumerate(e["trimestre"]) if t.endswith("Q1")]
+        eje.set_xticks(x[anuales], [e["trimestre"][i][:4] for i in anuales], fontsize=7)
         eje.set_title(titulo)
     ejes[0].set_ylabel("Bajo menos alto excedente")
     return figura
@@ -961,6 +975,50 @@ def figura_correlaciones(panel: pd.DataFrame) -> plt.Figure:
     return figura
 
 
+def figura_capital_bancos(panel: pd.DataFrame) -> plt.Figure:
+    """Figura B2: ratio de capital global de cada banco frente al límite global vigente."""
+    orden = panel.groupby("entidad")["activo_total"].mean().sort_values(ascending=False).index
+    figura, ejes = plt.subplots(3, 5, figsize=(ANCHO_DOS_COLUMNAS, 4.6), sharex=True,
+                                gridspec_kw={"wspace": 0.35, "hspace": 0.45})
+    for eje, banco in zip(ejes.flat, orden):
+        b = panel[panel["entidad"] == banco].sort_values("fecha")
+        f = pd.to_datetime(b["fecha"])
+        eje.fill_between(f, b["limite_global"], b["ratio_capital_global"], color=AZUL, alpha=0.12, lw=0)
+        eje.plot(f, b["ratio_capital_global"], color=AZUL, lw=1)
+        eje.step(f, b["limite_global"], where="post", color=ROJO, lw=1)
+        eje.set_title(banco.replace("Banco ", "").replace(" Perú", ""), fontsize=7, loc="left")
+        eje.tick_params(labelsize=6)
+    ejes_anuales(*ejes.flat, paso=3)
+    ejes[0, 0].plot([], [], color=AZUL, label="Ratio de capital global")
+    ejes[0, 0].plot([], [], color=ROJO, label="Límite global vigente")
+    figura.legend(*ejes[0, 0].get_legend_handles_labels(), loc="lower center", ncol=2,
+                  bbox_to_anchor=(0.5, -0.02), fontsize=7)
+    return figura
+
+
+def figura_robustez(t: pd.DataFrame) -> plt.Figure:
+    """Figura B3: coeficientes de la tabla de robustez con intervalos de confianza al 95 %."""
+    d = t.copy()
+    d["coef"] = d["Coeficiente"].astype(str).str.replace("*", "", regex=False).astype(float)
+    d["ee"] = d["e. e."].astype(str).str.strip("()").astype(float)
+    figura, ejes = plt.subplots(2, 1, figsize=(ANCHO_DOS_COLUMNAS, 4.4), gridspec_kw={"hspace": 0.45})
+    for eje, h, titulo in [(ejes[0], "H1", "A. H1: excedente rezagado"),
+                           (ejes[1], "H3", "B. H3: bajo excedente × post")]:
+        g = d[d["Hipótesis"] == h].reset_index(drop=True)
+        y = np.arange(len(g))[::-1]
+        placebo = g["Especificación"].str.startswith("Placebo")
+        colores = [GRIS if p else AZUL for p in placebo]
+        for xi, yi, ei, ci in zip(g["coef"], y, g["ee"], colores):
+            eje.errorbar(xi, yi, xerr=1.96 * ei, fmt="none", ecolor=ci, elinewidth=1, capsize=2)
+        eje.scatter(g["coef"], y, color=colores, s=14, zorder=3)
+        eje.axvline(0, color=ROJO, lw=0.8, ls="--")
+        etiquetas = [e.split(" (ventana")[0].replace("Base: ", "Base · ") for e in g["Especificación"]]
+        eje.set_yticks(y, etiquetas, fontsize=7)
+        eje.set_title(titulo)
+        eje.grid(axis="y", visible=False)
+    return figura
+
+
 def bloque_7(panel: pd.DataFrame, exposicion: pd.DataFrame) -> None:
     anotar("Bloque 7 · Robustez")
     t = tabla_robustez(panel, exposicion)
@@ -968,6 +1026,8 @@ def bloque_7(panel: pd.DataFrame, exposicion: pd.DataFrame) -> None:
     for _, f in t.iterrows():
         anotar(f"Robustez {f['Hipótesis']} · {f['Especificación']}: {f['Coeficiente']} {f['e. e.']} p={f['Valor p']}")
     guardar_figura(figura_correlaciones(panel), "fig_correlaciones.svg")
+    guardar_figura(figura_capital_bancos(panel), "fig_capital_bancos.svg")
+    guardar_figura(figura_robustez(t), "fig_robustez.svg")
 
 
 # ---------------------------------------------------------------------------
